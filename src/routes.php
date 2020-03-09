@@ -12,7 +12,7 @@ Route::get(config('laravel-passwordless-login.login_route').'/{expires}/{uid}', 
     Auth::guard(config('laravel-passwordless-login.user_guard'))
         ->login($user_model::find($request->uid), 'laravel-passwordless-login.remember_login');
 
-    redirect(config('laravel-passwordless-login.redirect_on_success'));
+    return redirect(config('laravel-passwordless-login.redirect_on_success'));
 })->name(config('laravel-passwordless-login.login_route_name'));
 
 Route::get('/laravel_passwordless_login_redirect_test_route', function (Request $request) {
